@@ -7,10 +7,11 @@ const ListItem = ({ imageUrl, title, author}) => {
     <View style={styles.container}>
       <View style={styles.itemContainer}>
         <View style={styles.leftContainer}>
-          <Image
+          {!!imageUrl &&
+            <Image
             style={{ width: 100, height: 100 }}
             source={{ uri: imageUrl }}
-          />
+          />}
         </View>
         <View style={styles.rightContainer}>
           <Text style={styles.text} numberOfLines={3}>
