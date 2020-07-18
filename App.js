@@ -1,20 +1,22 @@
 
-import React from 'react';
+import React, {useState,useEffect} from 'react';
 import { StyleSheet, Image, Text, View,FlatList,SafeAreaView } from 'react-native';
 import ListItem from './components/ListItem';
-import articles from './dummies/articles.json';
+import dummyArticles from './dummies/articles.json';
+
 
 export default function App() {
-  //jsonから値を収集
-  // const items = articles.map(( article,index ) => {
-  //   return (
-  //     <ListItem
-  //       imageUrl={article.urlToImage}
-  //       title={article.title}
-  //       author={article.author}
-  //       key={index}
-  //     />
-  // )} )
+
+  const [articles, setArticles] = useState([]);
+
+  //useEffectで画面がマウントされたときだけ発火するようになる
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setArticles(dummyArticles);
+    }, 2000);
+    return () => clearTimeout(timer);
+  }, [])
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
