@@ -1,17 +1,17 @@
 import React from "react";
-import { StyleSheet, Image, Text, View , } from "react-native";
+import { StyleSheet, Image, Text, View, TouchableOpacity } from "react-native";
 
 
-const ListItem = ({ imageUrl, title, author}) => {
+const ListItem = ({ imageUrl, title, author, onPress}) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.itemContainer}>
+      <TouchableOpacity style={styles.itemContainer} onPress={onPress}>
         <View style={styles.leftContainer}>
-          {!!imageUrl &&
+          {!!imageUrl && (
             <Image
-            style={{ width: 100, height: 100 }}
-            source={{ uri: imageUrl }}
-          />}
+              style={{ width: 100, height: 100 }}
+              source={{ uri: imageUrl }}
+            />
+          )}
         </View>
         <View style={styles.rightContainer}>
           <Text style={styles.text} numberOfLines={3}>
@@ -19,8 +19,7 @@ const ListItem = ({ imageUrl, title, author}) => {
           </Text>
           <Text style={styles.subText}>{author}</Text>
         </View>
-      </View>
-    </View>
+      </TouchableOpacity>
   );
 };
 
